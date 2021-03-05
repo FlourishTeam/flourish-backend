@@ -39,4 +39,37 @@ describe('auth routes', () => {
         });
       });
   });
+
+  it('allows the user to login via POST', async() => {
+    const res = await agent
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'test@test.com',
+        password: 'password'
+      });
+
+    expect(res.body).toEqual({
+      id: user.id,
+      email: 'test@test.com',
+      name: 'Name'
+    });
+  });
+
+  it('verifies a user is logged in', async() => {
+    await agent
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'test@test.com',
+        password: 'password'
+      });
+
+    const res = await agent 
+      .get('/api/v1/auth/verify');
+
+    expect(res.body).toEqual({
+      id: user.id,
+      email: 'test@test.com',
+      name: 'Name'
+    });
+  });
 });
