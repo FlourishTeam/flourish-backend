@@ -37,7 +37,7 @@ CREATE TABLE plants(
 CREATE TABLE user_plants(
     user_plant_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id BIGINT REFERENCES users(id),
-    plant_id BIGINT REFERENCES plants(plant_id),
+    plant_id BIGINT REFERENCES plants(plant_id)
 );
 
 CREATE TABLE users_plants_logs(
@@ -46,7 +46,7 @@ CREATE TABLE users_plants_logs(
     user_plant_id BIGINT REFEENCES user_plants(user_plant_id),
     plant_note TEXT NOT NULL,
     care_date DATE NOT NULL,
-    care_note VARCHAR (20) NOT NULL,
+    care_note VARCHAR (20) NOT NULL
 );
 
 
