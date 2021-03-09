@@ -42,3 +42,12 @@ Returns a list of plants that match the pattern of the passed string (non-option
 
 Returns a single plant by id (non-optional argument).
 
+```
+{
+  addToCollection(userId: Int!, plantId: Int!) {
+    userPlantId
+    plantId
+    userId
+  }
+}
+```
