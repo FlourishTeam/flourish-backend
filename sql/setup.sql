@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS plants CASCADE; 
 DROP TABLE IF EXISTS user_plants CASCADE; 
+DROP TABLE IF EXISTS users_plants_logs CASCADE; 
 
 CREATE TABLE users(
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -43,7 +44,7 @@ CREATE TABLE user_plants(
 CREATE TABLE users_plants_logs(
     user_plant_log_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id BIGINT REFERENCES users(id),
-    user_plant_id BIGINT REFEENCES user_plants(user_plant_id),
+    user_plant_id BIGINT REFERENCES user_plants(user_plant_id) ON DELETE CASCADE,
     plant_note TEXT NOT NULL,
     care_date DATE NOT NULL,
     care_note VARCHAR (20) NOT NULL
