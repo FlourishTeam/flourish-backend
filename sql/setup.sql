@@ -45,7 +45,7 @@ CREATE TABLE users_plants_logs(
     user_plant_log_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id BIGINT REFERENCES users(id),
 	plant_id BIGINT REFERENCES plants(plant_id),
-    user_plant_id BIGINT REFERENCES user_plants(user_plant_id),
+    user_plant_id BIGINT REFERENCES user_plants(user_plant_id) ON CASCADE DELETE,
     plant_note TEXT NOT NULL,
     care_date DATE NOT NULL,
     care_note VARCHAR (20) NOT NULL
