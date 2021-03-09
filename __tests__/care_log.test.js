@@ -26,13 +26,9 @@ describe('testing care log static methods', () => {
       });
   });
 
-  afterAll(() => {
-    pool.end();
-  });
-
-
   it('INSERTS a care log associated to a single plant', async() => {
-    // await CareLog.
+    // const query =
+    //  query
     expect('1').toEqual('1');
   });
 
@@ -44,4 +40,7 @@ describe('testing care log static methods', () => {
     expect('1').toEqual('1');
   });
 
+  afterAll(() => {
+    pool.end();
+  });
 });
