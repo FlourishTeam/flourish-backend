@@ -66,7 +66,7 @@ Returns a single plant by id (non-optional argument).
 Adds a plant to a user's collection by userId and plantId. 
 
 ```
-removeFromCollection(userPlantId: Int!, userId: Int!) {
+removeFromCollection(plantId: Int!, userId: Int!) {
   userPlantId
   plantId
   userId
