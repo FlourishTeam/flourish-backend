@@ -1,6 +1,6 @@
-### Overview
+### Types:
 
-Every `PlantType` query has access to the following fields from our data model:
+`PlantType`:
 * plantId 
 * image
 * commonName
@@ -23,12 +23,21 @@ Every `PlantType` query has access to the following fields from our data model:
 * watering
 * propagation
 
+`UserPlantType`:
+* userPlantId
+* plantId
+* userId
+
+`CareLogType`:
+* ...PlantType
+* careLogs
+
 ### Queries:
 
 ```
 {
     plantByName (name: String!) {
-        ...
+        ...PlantType
     }
 }
 ```
@@ -36,7 +45,9 @@ Returns a list of plants that match the pattern of the passed string (non-option
 
 ```
 {
-    plantById (id: Int!)
+    plantById (id: Int!) {
+      ...PlantType
+    }
 }
 ```
 
@@ -73,4 +84,3 @@ getMyPlants(userId: Int!) {
 > Note: more data can be added to this query if needed, as it currently only returns the common name and image.
 
 Returns all plants in a user's collection, by userId.
-
