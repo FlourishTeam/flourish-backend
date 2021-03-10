@@ -37,20 +37,36 @@ CREATE TABLE plants(
 
 CREATE TABLE user_plants(
     user_plant_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id BIGINT REFERENCES users(id) ON DELETE CASCADE,
+    user_id BIGINT REFERENCES users(id),
     plant_id BIGINT REFERENCES plants(plant_id)
 );
 
 CREATE TABLE users_plants_logs(
     user_plant_log_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id BIGINT REFERENCES users(id) ON DELETE CASCADE,
-	plant_id BIGINT REFERENCES plants(plant_id) ON DELETE CASCADE,
-    user_plant_id BIGINT REFERENCES user_plants(user_plant_id) ON DELETE CASCADE,
+    user_id BIGINT REFERENCES users(id),
+	plant_id BIGINT REFERENCES plants(plant_id),
+    user_plant_id BIGINT REFERENCES user_plants(user_plant_id),
     plant_note TEXT NOT NULL,
     care_date DATE NOT NULL,
     care_note VARCHAR (20) NOT NULL
 );
 
+INSERT INTO users (email, password_hash, name) VALUES ('test@test.com', 'jeihfiuesHFKLWfopewf09829048', 'jeff') RETURNING *
+INSERT INTO user_plants (plant_id, user_id) VALUES ('13', '1') RETURNING *
+INSERT INTO users_plants_logs (user_id, plant_id, user_plant_id, plant_note, care_date, care_note) VALUES ('1', '13','1', 'plant note2', '20200323', 'care note3') RETURNING *
 
-    -- care_dropdown VARCHAR (255) NOT NULL,
-    --     CHECK([care_dropdown]) IN ('water', 'mist', 'repot', 'nutrients', 'sunlight');
+SELECT * FROM users
+SELECT * FROM plants
+SELECT * FROM user_plants 
+SELECT * FROM users_plants_logs WHERE user_id = '1' AND plant_id = '13' AND user_plant_id = '1'
+	
+SELECT plants.*, json_agg(users_plants_logs) AS care_logs
+	FROM plants 
+	JOIN user_plants
+	ON plants.plant_id = user_plants.plant_id
+	JOIN users_plants_logs
+	ON users_plants_logs.user_plant_id = user_plants.user_plant_id
+	WHERE users_plants_logs.user_plant_id ='1'
+	GROUP BY users_plants_logs.user_plant_id, plants.plant_id
+	
+    
