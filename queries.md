@@ -84,3 +84,43 @@ getMyPlants(userId: Int!) {
 > Note: more data can be added to this query if needed, as it currently only returns the common name and image.
 
 Returns all plants in a user's collection, by userId.
+
+```
+{
+	getMyCareHistoryById(plantId: Int!, userId: Int!) {
+    careLogs {
+      userPlantLogId
+      userId
+      plantId
+      userPlantId
+      careDate
+      careType
+      careNote
+    }
+    plantDetails {
+      plantId
+      image
+      commonName
+      synonyms
+      scientificName
+      lightRange
+      hydrationRange
+      careDifficulty
+      pestsDiseases
+      warnings
+      height
+      spread
+      type
+      floweringPeriod
+      bloomSize
+      temperatureRange
+      placement
+      substrateRecommendation
+      pottingNotes
+      watering
+      propagation
+    }
+  }
+}
+```
+Returns all information for the My Care History page, separated by plantDetails and careLogs. Requires a plantId and userId. 
