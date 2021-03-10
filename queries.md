@@ -51,4 +51,26 @@ Returns a single plant by id (non-optional argument).
   }
 }
 ```
+
 Adds a plant to a user's collection by userId and plantId. 
+
+```
+removeFromCollection(userPlantId: Int!, userId: Int!) {
+  userPlantId
+  plantId
+  userId
+}
+```
+
+Removes a plant from a user's collection by userPlantId and plantId.
+
+```
+getMyPlants(userId: Int!) {
+  common_name
+  image
+}
+```
+> Note: more data can be added to this query if needed, as it currently only returns the common name and image.
+
+Returns all plants in a user's collection, by userId.
+
