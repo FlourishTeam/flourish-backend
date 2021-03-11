@@ -82,7 +82,7 @@ getMyPlants(userId: Int!) {
   plantId
 }
 ```
-> Note: more data can be added to this query if needed, as it currently only returns the common name and image.
+> Note: more data can be added to this query if needed, as it currently only returns the common name, plant id and image.
 
 Returns all plants in a user's collection, by userId.
 
