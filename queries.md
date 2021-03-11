@@ -77,8 +77,9 @@ Removes a plant from a user's collection by userPlantId and plantId.
 
 ```
 getMyPlants(userId: Int!) {
-  common_name
+  commonName
   image
+  plantId
 }
 ```
 > Note: more data can be added to this query if needed, as it currently only returns the common name and image.
