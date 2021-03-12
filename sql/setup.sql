@@ -46,7 +46,7 @@ CREATE TABLE users_plants_logs(
     user_id BIGINT REFERENCES users(id) ON DELETE CASCADE,
 	plant_id BIGINT REFERENCES plants(plant_id) ON DELETE CASCADE,
     user_plant_id BIGINT REFERENCES user_plants(user_plant_id) ON DELETE CASCADE,
-    care_date DATE NOT NULL,
+    care_date TEXT NOT NULL,
     care_type VARCHAR (255) NOT NULL,
     care_note TEXT NOT NULL
 );
