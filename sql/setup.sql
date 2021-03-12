@@ -50,6 +50,3 @@ CREATE TABLE users_plants_logs(
     care_type VARCHAR (255) NOT NULL,
     care_note TEXT NOT NULL
 );
-
--- care_dropdown VARCHAR (255) NOT NULL,
-    --     CHECK([care_dropdown]) IN ('water', 'mist', 'repot', 'nutrients', 'sunlight');
