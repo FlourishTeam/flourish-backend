@@ -125,3 +125,29 @@ Returns all plants in a user's collection, by userId.
 }
 ```
 Returns all information for the My Care History page, separated by plantDetails and careLogs. Requires a plantId and userId. 
+
+```
+{
+  addLogById(userId, plantId) { 
+    userId
+    plantId
+    userPlantId, 
+    careDate, 
+    careType, 
+    careNote
+  }
+}
+```
+INSERTS a care log associated to a single plant
+
+```
+{
+  removeLogByLogId(userPlantId) { 
+    userPlantLogId, 
+    careDate, 
+    careType, 
+    careNote
+  }
+}
+```
+DELETES a care log associated to a single plant
